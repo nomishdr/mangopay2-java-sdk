@@ -24,6 +24,7 @@ public class CardPreAuthorizationApiImplTest extends BaseTest {
         assertTrue(cardPreAuthorization.getStatus() == PreAuthorizationStatus.SUCCEEDED);
         assertTrue(cardPreAuthorization.getPaymentStatus() == PaymentStatus.WAITING);
         assertTrue(cardPreAuthorization.getExecutionType() == PreAuthorizationExecutionType.DIRECT);
+        assertTrue((cardPreAuthorization.getCulture()) == CultureCode.FR);
         assertNull(cardPreAuthorization.getPayInId());
         assertNotNull(cardPreAuthorization.getRemainingFunds());
     }
@@ -75,17 +76,7 @@ public class CardPreAuthorizationApiImplTest extends BaseTest {
     @Test
     public void createCardPreAuthorizationWithBrowserInfo() throws Exception {
         CardPreAuthorization cardPreAuthorization = getPreAuthorization();
-        BrowserInfo browserInfo = new BrowserInfo();
-        browserInfo.setAcceptHeader("application/json,text/javascript,*/*;q=0.01<");
-        browserInfo.setColorDepth("32");
-        browserInfo.setJavaEnabled(true);
-        browserInfo.setJavaEnabled(true);
-        browserInfo.setLanguage("fr");
-        browserInfo.setScreenHeight("1080");
-        browserInfo.setScreenWidth("1920");
-        browserInfo.setTimeZoneOffset("+3600");
-        browserInfo.setUserAgent("postman");
-        cardPreAuthorization.setBrowserInfo(browserInfo);
+        cardPreAuthorization.setBrowserInfo(getNewBrowserInfo());
 
         cardPreAuthorization = this.api.getCardPreAuthorizationApi().create(cardPreAuthorization);
 
