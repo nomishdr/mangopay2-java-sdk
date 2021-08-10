@@ -1,3 +1,14 @@
+## [2.17.0] - 2021-08-10
+## Fixed
+
+- Better error parsing (issue #244)
+- Change `FallbackReason` parameter's type to object in PayOutPaymentDetailsBankWire
+
+## Added
+
+- You can now update and view a Recurring PayIn Registration object. To know more about this feature, please consult the documentation [here](https://docs.mangopay.com/guide/recurring-payments-introduction).
+- To improve recurring payments, we have added new parameters for CIT : DebitedFunds & Fees. To know more about this feature, please consult the documentation [here](https://docs.mangopay.com/endpoints/v2.01/payins#e1053_create-a-recurring-payin-cit)
+
 ## [2.16.0] - 2021-06-10
 ## Added
 
@@ -38,7 +49,7 @@ Please note that this feature must be authorized and activated by MANGOPAY. More
 The [endpoint](https://docs.mangopay.com/endpoints/v2.01/transactions#e993_list-transactions-for-a-mandate) to list all transactions linked to mandate has been added to the SDK.
 
 ## [2.14.0] - 2021-05-11
-## Fixed 
+## Fixed
 
 ### IBAN for testing purposes
 
@@ -46,11 +57,11 @@ The [endpoint](https://docs.mangopay.com/endpoints/v2.01/transactions#e993_list-
 
 More information about how to test payments, click [here](https://docs.mangopay.com/guide/testing-payments).
 
-### Others 
+### Others
 
 - LegalRepresentativeBirthday primitive Long fixed. Thanks @LeComptoirDesPharmacies
 
-## Added 
+## Added
 
 Some of you use a lot the [PreAuthorization](https://docs.mangopay.com/endpoints/v2.01/preauthorizations#e183_the-preauthorization-object) feature of our API. To make your life easier, we have added three new events :
 
@@ -94,14 +105,14 @@ The parameter `Applied3DSVersion` shows you the version of the 3DS protocol used
 
 ## [2.12.0] - 2021-02-19
 - 3DS2 integration with Shipping and Billing objects, including FirstName and LastName fields
-The objects Billing and Shipping may be included on all calls to the following endpoints:
-  - /preauthorizations/card/direct
-  - /payins/card/direct
-  - /payins/card/web
+  The objects Billing and Shipping may be included on all calls to the following endpoints:
+    - /preauthorizations/card/direct
+    - /payins/card/direct
+    - /payins/card/web
 - Enable Instant Payment for payouts by adding a new parameter PayoutModeRequested on the following endpoint /payouts/bankwire
-  - The new parameter PayoutModeRequested can take two differents values : "INSTANT_PAYMENT" or "STANDARD" (STANDARD = the way we procede normaly a payout request)
-  - This new parameter is not mandatory and if empty or not present, the payout will be "STANDARD" by default
-Instant Payment is in beta all over Europe - SEPA region
+    - The new parameter PayoutModeRequested can take two differents values : "INSTANT_PAYMENT" or "STANDARD" (STANDARD = the way we procede normaly a payout request)
+    - This new parameter is not mandatory and if empty or not present, the payout will be "STANDARD" by default
+      Instant Payment is in beta all over Europe - SEPA region
 ## [2.11.6] - 2020-12-09
 - Added 'Regulatory' endpoint to allow checks of User Block Status
 - Added support for Regulatory -> Blocked Status Hooks
@@ -127,7 +138,7 @@ Instant Payment is in beta all over Europe - SEPA region
 - Enabled TLS v1.2 for Java 7
 
 ## [2.11.2] - 2020-08-11
-- Fixed PayInDeserializer not setting the WireReference from the JSON response. 
+- Fixed PayInDeserializer not setting the WireReference from the JSON response.
 
 ## [2.11.1] - 2020-08-10
 - New MultiCapture and RemainingFunds Parameters in Preauthorization object
@@ -145,7 +156,7 @@ Instant Payment is in beta all over Europe - SEPA region
 - Serialization issue has been fixed. `ExecutionDetails` property was wrongly sent on JSON request, `TemplateURLOptions` was not taken in account for Payin Web.
 
 ## [2.10.0] - 2020-03-19
-### Added 
+### Added
 - `AccountNumber` property added for Payins `EXTERNAL_INSTRUCTION` (BankingAliases)
 - GooglePay `Payin` methods are now available. More info about activation to come in the following weeks...
 - `EXPIRED` Mandate Status and linked `MANDATE_EXPIRED` Event Type has been added, as this feature will be shortly supported for DirectDebit Payins. More info on our [docs](https://docs.mangopay.com/endpoints/v2.01/mandates#e230_the-mandate-object)
